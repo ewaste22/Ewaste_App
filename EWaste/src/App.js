@@ -9,7 +9,7 @@ import { Store, Persistor } from './redux/Store';
 function AppStack() {
   return (
     <>
-      <Routers />
+      <Router />
     </>
   );
 }
