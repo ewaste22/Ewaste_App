@@ -11,7 +11,7 @@ export const failedLogin = () => ({
 });
 
 export const loginUser = (email, password, navigation) => async (dispatch) => {
-  dispatch(setLoading(true));
+  // dispatch(setLoading(true));
   await login(email, password)
     .then((response) => {
       dispatch(successLogin(response.data));
