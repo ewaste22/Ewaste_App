@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React, {useState} from 'react'
+import { COLORS } from '../../../themes';
 
 const InputText = ({placeholder, multiline, style, type, maxLength, onChangeText, value, error, name, onBlur, secureTextEntry}) => {
   const [isFocus, setIsFocus] = useState(false);
@@ -28,7 +29,7 @@ export default InputText
 const styles = StyleSheet.create({
   container: {
       borderRadius: 15,
-      borderWidth: 2,
+      backgroundColor: COLORS.grey8,
       justifyContent: 'flex-start',
       paddingHorizontal: 10,
       flexDirection: 'row',
