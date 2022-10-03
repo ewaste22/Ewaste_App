@@ -20,11 +20,11 @@ const Login = ({navigation}) => {
     <ScrollView contentContainerStyle={styles.container}>
       <View
         style={{
-          marginHorizontal: SIZES.padding4,
+          marginHorizontal: SIZES.padding3,
           marginTop: SIZES.padding5,
           flex: 1,
         }}>
-        <Text style={styles.headerTitle}>Login</Text>
+        <Text style={styles.headerTitle}>Log In</Text>
         <View style={{ marginTop: SIZES.padding5 }}>
           <Text style={styles.title}>Email</Text>
           <InputText
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.background,
     paddingTop: SIZES.padding4,
   },
   title: {
