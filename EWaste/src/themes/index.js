@@ -6,6 +6,8 @@ export const COLORS = {
   primary: '#85C681',
   secondary: '#2D5030',
   third: '#D0E3AD',
+  
+  background: '#F6F5F5',
 
   accent: '#4895ef',
   danger: '#f72585',
