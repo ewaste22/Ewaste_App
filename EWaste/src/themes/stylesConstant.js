@@ -8,4 +8,9 @@ export default StyleSheet.create({
     elevation: 4,
     marginBottom: 10,
   },
+  spaceBeetween: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  }
 });
