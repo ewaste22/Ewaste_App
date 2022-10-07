@@ -12,7 +12,7 @@ const GoBackIcon = ({iconColor, size, style}) => {
     <TouchableOpacity
       onPress={handleGoBack}
       style={{
-        position: 'absolute', left: SIZES.padding2, backgroundColor: COLORS.primary, borderRadius: 100, ...style,
+        position: 'absolute', left: SIZES.padding2, backgroundColor: COLORS.black, borderRadius: 100, ...style,
       }}
     >
       <Icon name="arrow-left" color={iconColor} size={size} />

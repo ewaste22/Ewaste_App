@@ -12,8 +12,8 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch();
 
   const sendData = () => {
-    // navigation.replace('Splash')
-    dispatch(loginUser(email, password, navigation));
+    navigation.replace('MainApp')
+    // dispatch(loginUser(email, password, navigation));
   };
 
   return (
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     ...FONTS.headingLargeBold,
     marginVertical: SIZES.padding5,
-    color: COLORS.secondary,
+    color: COLORS.black,
     fontWeight: 'bold',
     marginLeft: 3
     // textAlign: 'center',

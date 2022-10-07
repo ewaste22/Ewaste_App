@@ -13,7 +13,7 @@ const Header = ({title}) => {
         alignItems: 'center',
       }}>
       <GoBackIcon iconColor={COLORS.white} size={SIZES.icon} />
-      <Text style={[FONTS.bodyLargeMedium, { color: COLORS.secondary, fontWeight: 'bold' }]}>{title}</Text>
+      <Text style={[FONTS.titleNormalBold, { color: COLORS.black, fontWeight: 'bold' }]}>{title}</Text>
     </View>
   );
 };

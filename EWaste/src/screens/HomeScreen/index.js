@@ -7,10 +7,10 @@ import Icon from 'react-native-vector-icons/Feather';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import {MiniMap} from '../../assets';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Header title="Delivery" />
+      {/* <Header title="Delivery" /> */}
       <View style={{marginHorizontal: SIZES.padding3}}>
         <View
           style={[
@@ -97,7 +97,7 @@ const HomeScreen = () => {
             </Text>
           </View>
           <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("DetailScreen")}>
               <Text style={{ ...FONTS.bodyNormalBold, textDecorationLine: "underline", color: "#F55951" }}>Detail</Text>
             </TouchableOpacity>
           </View>
