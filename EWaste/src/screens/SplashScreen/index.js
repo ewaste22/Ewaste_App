@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, {useEffect} from 'react'
+import { COLORS } from '../../themes';
 
 const SplashScreen = ({navigation}) => {
   
@@ -10,7 +11,7 @@ const SplashScreen = ({navigation}) => {
   }, []);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text>SplashScreen</Text>
     </View>
   )
@@ -18,4 +19,11 @@ const SplashScreen = ({navigation}) => {
 
 export default SplashScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.primary,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})

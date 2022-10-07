@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: COLORS.primary,
     padding: SIZES.base,
-    borderRadius: RADIUS.large,
+    borderRadius: RADIUS.medium,
     width: 60,
   },
 });

@@ -87,20 +87,9 @@ const HomeScreen = ({navigation}) => {
           ]}>
           Orderan Baru
         </Text>
-        <View style={[stylesConstant.card, {padding: SIZES.radius2}]}>
+        <TouchableOpacity style={[stylesConstant.card, {padding: SIZES.radius2}]} onPress={() => navigation.navigate('DetailScreen')}>
           <View style={stylesConstant.spaceBeetween}>
             <Label title={4}/>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('DetailScreen')}>
-              <Text
-                style={{
-                  ...FONTS.bodyNormalBold,
-                  textDecorationLine: 'underline',
-                  color: COLORS.black,
-                }}>
-                Detail
-              </Text>
-            </TouchableOpacity>
           </View>
           <View style={[stylesConstant.spaceBeetween, {marginTop: 10}]}>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Herlan Nurachman</Text>
@@ -114,21 +103,10 @@ const HomeScreen = ({navigation}) => {
             <Text style={{ ...FONTS.bodyNormalBold }}>Harga</Text>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Rp. 12.000</Text>
           </View>
-        </View>
-        <View style={[stylesConstant.card, {padding: SIZES.radius2}]}>
+        </TouchableOpacity>
+        <TouchableOpacity style={[stylesConstant.card, {padding: SIZES.radius2}]}>
           <View style={stylesConstant.spaceBeetween}>
             <Label title={5.7}/>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('DetailScreen')}>
-              <Text
-                style={{
-                  ...FONTS.bodyNormalBold,
-                  textDecorationLine: 'underline',
-                  color: COLORS.black,
-                }}>
-                Detail
-              </Text>
-            </TouchableOpacity>
           </View>
           <View style={[stylesConstant.spaceBeetween, {marginTop: 10}]}>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Aji Nuansa</Text>
@@ -142,21 +120,10 @@ const HomeScreen = ({navigation}) => {
             <Text style={{ ...FONTS.bodyNormalBold }}>Harga</Text>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Rp. 20.000</Text>
           </View>
-        </View>
-        <View style={[stylesConstant.card, {padding: SIZES.radius2}]}>
+        </TouchableOpacity>
+        <TouchableOpacity style={[stylesConstant.card, {padding: SIZES.radius2}]}>
           <View style={stylesConstant.spaceBeetween}>
             <Label title={5}/>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('DetailScreen')}>
-              <Text
-                style={{
-                  ...FONTS.bodyNormalBold,
-                  textDecorationLine: 'underline',
-                  color: COLORS.black,
-                }}>
-                Detail
-              </Text>
-            </TouchableOpacity>
           </View>
           <View style={[stylesConstant.spaceBeetween, {marginTop: 10}]}>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Aldi Ageng</Text>
@@ -170,21 +137,10 @@ const HomeScreen = ({navigation}) => {
             <Text style={{ ...FONTS.bodyNormalBold }}>Harga</Text>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Rp. 60.000</Text>
           </View>
-        </View>
-        <View style={[stylesConstant.card, {padding: SIZES.radius2}]}>
+        </TouchableOpacity>
+        <TouchableOpacity style={[stylesConstant.card, {padding: SIZES.radius2}]}>
           <View style={stylesConstant.spaceBeetween}>
             <Label title={3} />
-            <TouchableOpacity
-              onPress={() => navigation.navigate('DetailScreen')}>
-              <Text
-                style={{
-                  ...FONTS.bodyNormalBold,
-                  textDecorationLine: 'underline',
-                  color: COLORS.black,
-                }}>
-                Detail
-              </Text>
-            </TouchableOpacity>
           </View>
           <View style={[stylesConstant.spaceBeetween, {marginTop: 10}]}>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Sahid Jafar</Text>
@@ -198,7 +154,7 @@ const HomeScreen = ({navigation}) => {
             <Text style={{ ...FONTS.bodyNormalBold }}>Harga</Text>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Rp. 24.000</Text>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
