@@ -3,7 +3,7 @@ import React, {useCallback} from 'react';
 import {COLORS, SIZES, FONTS} from '../../../themes';
 import GoBackIcon from '../GoBackIcon';
 
-const Header = ({title}) => {
+const Header = ({title, showIcon}) => {
   return (
     <View
       style={{
@@ -12,7 +12,7 @@ const Header = ({title}) => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <GoBackIcon iconColor={COLORS.white} size={SIZES.icon} />
+      {showIcon ? <GoBackIcon iconColor={COLORS.white} size={SIZES.icon} /> : ""}
       <Text style={[FONTS.titleNormalBold, { color: COLORS.black, fontWeight: 'bold' }]}>{title}</Text>
     </View>
   );

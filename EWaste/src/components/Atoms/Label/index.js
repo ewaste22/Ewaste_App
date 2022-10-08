@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {COLORS, FONTS, RADIUS, SIZES} from '../../../themes';
 
-const Label = ({title}) => {
+const Label = ({title, size}) => {
   return (
     <View style={styles.wrapper}>
       <Text

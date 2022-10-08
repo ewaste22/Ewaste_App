@@ -9,7 +9,7 @@ const DetailScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View>
-        <Header title="Detail Delivery" />
+        <Header title="Detail Delivery" showIcon={true}/>
 
         <View style={{marginHorizontal: SIZES.padding3}}>
           {/* Card 1 */}

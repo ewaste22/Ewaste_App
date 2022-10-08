@@ -89,7 +89,7 @@ const HomeScreen = ({navigation}) => {
         </Text>
         <TouchableOpacity style={[stylesConstant.card, {padding: SIZES.radius2}]} onPress={() => navigation.navigate('DetailScreen')}>
           <View style={stylesConstant.spaceBeetween}>
-            <Label title={4}/>
+            <Label title={4} size="big"/>
           </View>
           <View style={[stylesConstant.spaceBeetween, {marginTop: 10}]}>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Herlan Nurachman</Text>
@@ -106,7 +106,7 @@ const HomeScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity style={[stylesConstant.card, {padding: SIZES.radius2}]}>
           <View style={stylesConstant.spaceBeetween}>
-            <Label title={5.7}/>
+            <Label title={5.7} size="big"/>
           </View>
           <View style={[stylesConstant.spaceBeetween, {marginTop: 10}]}>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Aji Nuansa</Text>
@@ -123,7 +123,7 @@ const HomeScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity style={[stylesConstant.card, {padding: SIZES.radius2}]}>
           <View style={stylesConstant.spaceBeetween}>
-            <Label title={5}/>
+            <Label title={5} size="big"/>
           </View>
           <View style={[stylesConstant.spaceBeetween, {marginTop: 10}]}>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Aldi Ageng</Text>
@@ -140,7 +140,7 @@ const HomeScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity style={[stylesConstant.card, {padding: SIZES.radius2}]}>
           <View style={stylesConstant.spaceBeetween}>
-            <Label title={3} />
+            <Label title={3} size="big"/>
           </View>
           <View style={[stylesConstant.spaceBeetween, {marginTop: 10}]}>
             <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Sahid Jafar</Text>
