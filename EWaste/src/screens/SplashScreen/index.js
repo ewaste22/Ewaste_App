@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, {useEffect} from 'react'
 import { COLORS } from '../../themes';
+import { useSelector } from 'react-redux';
 
 const SplashScreen = ({navigation}) => {
+  const login = useSelector((state) => state.login.isLogin);
   
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('Login');
+      !login ? navigation.replace('Login') :  navigation.replace('MainApp');
     }, 3000);
   }, []);
 

@@ -12,8 +12,8 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch();
 
   const sendData = () => {
-    navigation.replace('MainApp')
-    // dispatch(loginUser(email, password, navigation));
+    // navigation.replace('MainApp')
+    dispatch(loginUser(email, password, navigation));
   };
 
   return (

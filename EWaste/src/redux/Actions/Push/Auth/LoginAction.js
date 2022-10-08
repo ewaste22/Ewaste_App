@@ -1,5 +1,6 @@
 import { LOGIN_SUCCESS, LOGIN_FAILED } from "../../../Types";
 import { login } from "../../../../services/Api";
+import Auth from "../../../../services/Storage/Auth";
 
 export const successLogin = (payload) => ({
   type: LOGIN_SUCCESS,
@@ -15,7 +16,8 @@ export const loginUser = (email, password, navigation) => async (dispatch) => {
   await login(email, password)
     .then((response) => {
       dispatch(successLogin(response.data));
-      // navigation.replace('MainApp');
+      Auth.setAccount(response.data)
+      navigation.replace('MainApp');
     })
     .catch((err) => {
       dispatch(failedLogin());
