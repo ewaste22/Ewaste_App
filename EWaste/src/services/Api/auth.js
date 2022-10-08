@@ -1,6 +1,9 @@
 import axios from '../../utils/axios';
 
-export const login = (email, password) => axios.post('/auth/login', { email, password });
+export const login = (email, password) => axios.post('/auth/courier/login', { 
+  email_courier: email, 
+  password_courier: password 
+});
 
 export const register = (data) => axios.post('/auth/register', data, {
   headers: {

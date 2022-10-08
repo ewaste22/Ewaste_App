@@ -6,7 +6,7 @@ const TabItem = ({isFocused, onPress, onLongPress, label }) => {
   const Icon = () => {
       if(label === "Home") return isFocused ? <IconHomeActive/> : <IconHome />
 
-      if(label === "Login") return isFocused ? <IconAkunActive/> : <IconAkun />
+      if(label === "Akun") return isFocused ? <IconAkunActive/> : <IconAkun />
       return <IconHome />
   }
 
