@@ -4,5 +4,8 @@ import Akun from "./Auth/Akun";
 import HomeScreen from "./HomeScreen";
 import SplashScreen from "./SplashScreen";
 import DetailScreen from "./DetailScreen";
+import ForgotPassword from "./Auth/ForgotPassword";
+import SettingScreen from "./SettingScreen";
+import ChangePassword from "./Auth/ChangePassword";
 
-export {Login, Register, Akun, HomeScreen, SplashScreen, DetailScreen};
+export {Login, Register, Akun, HomeScreen, SplashScreen, DetailScreen, ForgotPassword, SettingScreen, ChangePassword};

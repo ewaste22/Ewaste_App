@@ -10,11 +10,11 @@ const CustomButton = ({title, enabled, onPress, type, size, buttonStyle}) => {
         alignItems: 'center',
         alignContent: 'center',
         paddingVertical: size === 'small' ? 6 : 10,
-        backgroundColor: COLORS.primary,
+        backgroundColor: enabled === false ? COLORS.primary : COLORS.grey1,
         borderRadius: 15,
         ...buttonStyle
       }}
-      enabled={enabled}
+      disabled={enabled}
       onPress={onPress}>
       <Text style={{ color: COLORS.white, ...FONTS.h3, fontWeight: 'bold', textTransform: 'uppercase' }}>{title}</Text>
     </TouchableOpacity>

@@ -16,7 +16,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const Akun = () => {
+const Akun = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* <Header title="Akun Saya"/> */}
@@ -57,7 +57,7 @@ const Akun = () => {
         </View>
       </ImageBackground>
 
-      <View
+      {/* <View
         style={[
           stylesConstant.card,
           {
@@ -148,10 +148,10 @@ const Akun = () => {
             Gratis
           </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <View style={{backgroundColor: COLORS.white, padding: SIZES.padding3}}>
-        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: SIZES.radius1 }}>
+        {/* <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: SIZES.radius1 }}>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <AntDesign name="user" color={COLORS.secondary} size={SIZES.h3} />
             <Text style={{ ...FONTS.bodyNormalMedium, marginLeft: SIZES.base }}>Member</Text>
@@ -161,7 +161,7 @@ const Akun = () => {
             <AntDesign name="right" color={COLORS.lightGray} size={SIZES.h5} />
           </View>
         </TouchableOpacity>
-        <Separator />
+        <Separator /> */}
         <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: SIZES.radius1 }}>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <AntDesign name="carryout" color={COLORS.secondary} size={SIZES.h3} />
@@ -172,7 +172,7 @@ const Akun = () => {
           </View>
         </TouchableOpacity>
         <Separator />
-        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: SIZES.radius1 }}>
+        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: SIZES.radius1 }} onPress={() => navigation.navigate('SettingScreen')}>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <AntDesign name="setting" color={COLORS.secondary} size={SIZES.h3} />
             <Text style={{ ...FONTS.bodyNormalMedium, marginLeft: SIZES.base }}>Pengaturan Akun</Text>

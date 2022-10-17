@@ -5,10 +5,13 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {
   Akun,
+  ChangePassword,
   DetailScreen,
+  ForgotPassword,
   HomeScreen,
   Login,
   Register,
+  SettingScreen,
   SplashScreen,
 } from '../screens';
 import {BottomNavigation} from '../components';
@@ -89,6 +92,22 @@ const Router = () => {
       <Stack.Screen
         name="DetailScreen"
         component={DetailScreen}
+        options={{headerShown: false}}
+      />
+      
+      <Stack.Screen
+        name="SettingScreen"
+        component={SettingScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ChangePassword"
+        component={ChangePassword}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

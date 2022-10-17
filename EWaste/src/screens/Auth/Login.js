@@ -47,10 +47,12 @@ const Login = ({navigation}) => {
             secureTextEntry={true}
           />
         </View>
+        <TouchableOpacity style={{ marginVertical: SIZES.padding1, alignItems: 'flex-end', marginRight: SIZES.base }} onPress={() => navigation.navigate('ForgotPassword')}>
+          <Text style={{ ...FONTS.bodyNormalRegular, color: COLORS.secondary}}>Lupa Password</Text>
+        </TouchableOpacity>
         <CustomButton
           onPress={() => sendData()}
           title="Login"
-          buttonStyle={{marginTop: SIZES.padding5 }}
         />
       </View>
       <View style={styles.goToRegister}>
