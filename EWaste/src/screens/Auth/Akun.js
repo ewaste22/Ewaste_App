@@ -6,26 +6,39 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
-import {COLORS, FONTS, SIZES} from '../../themes';
+import React, { useEffect } from 'react';
+import { COLORS, FONTS, SIZES } from '../../themes';
 import stylesConstant from '../../themes/stylesConstant';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { TabMenu } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { akunUser } from '../../redux/Actions';
+import { akunUser, logout } from '../../redux/Actions';
+import Auth from '../../services/Storage/Auth';
 
-const Akun = ({navigation}) => {
+const Akun = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
   const userId = useSelector((state) => state.login.userData.id);
   const userToken = useSelector((state) => state.login.userData.token);
 
+  const onLogout = () => {
+    Auth.logout();
+    dispatch(logout());
+    navigation.replace('Splash');
+  }
+
+  const getUser = async () => {
+    let data = await Auth.getAccount();
+    console.log(data);
+  }
+
   useEffect(() => {
     console.log(userId, userToken);
-    dispatch(akunUser(userToken))
+    dispatch(akunUser(userToken));
+    getUser();
   }, [])
-  
+
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -41,8 +54,8 @@ const Akun = ({navigation}) => {
           }}
           style={styles.imgProfile}
         />
-        <View style={{paddingLeft: SIZES.radius1}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{ paddingLeft: SIZES.radius1 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Entypo name="star" color={COLORS.secondary} size={SIZES.radius1} />
             <Entypo name="star" color={COLORS.secondary} size={SIZES.radius1} />
             <Entypo name="star" color={COLORS.secondary} size={SIZES.radius1} />
@@ -61,109 +74,16 @@ const Akun = ({navigation}) => {
             }}>
             Asep Brimstone
           </Text>
-          <Text style={{...FONTS.bodyNormalMedium, color: COLORS.white}}>
+          <Text style={{ ...FONTS.bodyNormalMedium, color: COLORS.white }}>
             +62 8934 4312 231
           </Text>
         </View>
       </ImageBackground>
-
-      {/* <View
-        style={[
-          stylesConstant.card,
-          {
-            marginHorizontal: SIZES.padding3,
-            flexDirection: 'row',
-            marginVertical: SIZES.padding3,
-          },
-        ]}>
-        <TouchableOpacity
-          style={{
-            flex: 1,
-            borderRightWidth: 1,
-            borderColor: COLORS.lightGray2,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginRight: SIZES.base,
-          }}>
-          <AntDesign name="scan1" color={COLORS.secondary} size={SIZES.h3} />
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={{
-            flex: 2,
-            borderRightWidth: 1,
-            borderColor: COLORS.lightGray2,
-            marginRight: SIZES.base,
-          }}>
-          <View style={{flexDirection: 'row'}}>
-            <FontAwesome
-              name="money"
-              color={COLORS.secondary}
-              size={SIZES.h4}
-            />
-            <Text style={{...FONTS.bodySmallBold, marginLeft: 5}}>Saldo</Text>
-          </View>
-          <Text
-            style={{...FONTS.bodyNormalBold, color: COLORS.black}}
-            numberOfLines={1}
-            ellipsizeMode="tail">
-            Rp. 120.000
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            flex: 2,
-            marginLeft: 2,
-            borderRightWidth: 1,
-            borderColor: COLORS.lightGray2,
-            marginRight: SIZES.base,
-          }}>
-          <View style={{flexDirection: 'row'}}>
-            <AntDesign
-              name="pay-circle-o1"
-              color={COLORS.secondary}
-              size={SIZES.h4}
-            />
-            <Text style={{...FONTS.bodySmallBold, marginLeft: 5}}>Coin</Text>
-          </View>
-          <Text
-            style={{...FONTS.bodyNormalBold, color: COLORS.black}}
-            numberOfLines={1}
-            ellipsizeMode="tail">
-            5 Coin
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            flex: 2,
-            marginLeft: 2,
-            borderRightWidth: 1,
-            borderColor: COLORS.lightGray2,
-            marginRight: SIZES.base,
-          }}>
-          <View style={{flexDirection: 'row'}}>
-            <AntDesign
-              name="creditcard"
-              color={COLORS.secondary}
-              size={SIZES.h4}
-            />
-            <Text style={{...FONTS.bodySmallBold, marginLeft: 5}}>
-              Tarik Tunai
-            </Text>
-          </View>
-          <Text
-            style={{...FONTS.bodyNormalBold, color: COLORS.black}}
-            numberOfLines={1}
-            ellipsizeMode="tail">
-            Gratis
-          </Text>
-        </TouchableOpacity>
-      </View> */}
-        <TabMenu titleMenu="Riwayat Penjemputan" iconName="carryout"/>
-        <TabMenu titleMenu="Pengaturan Akun" iconName="setting" onPress={() => navigation.navigate("SettingScreen")}/>
-        <TabMenu titleMenu="Pusat Bantuan" iconName="questioncircleo"/>
-        <TabMenu titleMenu="Customer Service" iconName="customerservice"/>
-        <TabMenu titleMenu="Logout" iconName="logout"/>
+      <TabMenu titleMenu="Riwayat Penjemputan" iconName="carryout" />
+      <TabMenu titleMenu="Pengaturan Akun" iconName="setting" onPress={() => navigation.navigate("SettingScreen")} />
+      <TabMenu titleMenu="Pusat Bantuan" iconName="questioncircleo" />
+      <TabMenu titleMenu="Customer Service" iconName="customerservice" />
+      <TabMenu titleMenu="Logout" iconName="logout" onPress={() => onLogout()} />
     </ScrollView>
   );
 };
