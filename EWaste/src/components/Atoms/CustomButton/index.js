@@ -10,7 +10,7 @@ const CustomButton = ({title, enabled, onPress, type, size, buttonStyle}) => {
         alignItems: 'center',
         alignContent: 'center',
         paddingVertical: size === 'small' ? 6 : 10,
-        backgroundColor: enabled === false ? COLORS.primary : COLORS.grey1,
+        backgroundColor: enabled === false ? COLORS.primary : COLORS.grey6,
         borderRadius: 15,
         ...buttonStyle
       }}

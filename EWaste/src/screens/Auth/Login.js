@@ -53,6 +53,7 @@ const Login = ({navigation}) => {
         <CustomButton
           onPress={() => sendData()}
           title="Login"
+          enabled={email === "" || password === ""}
         />
       </View>
       <View style={styles.goToRegister}>

@@ -1,19 +1,23 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import {ScrollView, View} from 'react-native';
+import React from 'react';
 import stylesConstant from '../../themes/stylesConstant';
-import {Header, Input, InputText, TabMenu} from '../../components';
+import {Header, TabMenu} from '../../components';
+import { SIZES } from '../../themes';
 
 const SettingScreen = ({navigation}) => {
-
   return (
     <ScrollView contentContainerStyle={stylesConstant.container}>
-      <Header title="Pengaturan" showIcon={false}/>
-      <TabMenu titleMenu="Ubah Profile" iconName="profile"/>
-      <TabMenu titleMenu="Ubah Password" iconName="lock" onPress={() => navigation.navigate('ChangePassword')}/>
+      <Header title="Pengaturan" showIcon={true} />
+      <View style={{ marginTop: SIZES.radius1 }}>
+        <TabMenu titleMenu="Ubah Profile" iconName="profile" />
+        <TabMenu
+          titleMenu="Ubah Password"
+          iconName="lock"
+          onPress={() => navigation.navigate('ChangePassword')}
+        />
+      </View>
     </ScrollView>
   );
 };
 
 export default SettingScreen;
-
-const styles = StyleSheet.create({});

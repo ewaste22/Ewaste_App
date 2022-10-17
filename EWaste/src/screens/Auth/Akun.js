@@ -4,19 +4,29 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
-import {Header, Label, Separator, TextHeader} from '../../components/Atoms';
-import {COLORS, FONTS, RADIUS, SIZES} from '../../themes';
+import React, {useEffect} from 'react';
+import {COLORS, FONTS, SIZES} from '../../themes';
 import stylesConstant from '../../themes/stylesConstant';
 import Entypo from 'react-native-vector-icons/Entypo';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { TabMenu } from '../../components';
+import { useSelector, useDispatch } from 'react-redux';
+import { akunUser } from '../../redux/Actions';
 
 const Akun = ({navigation}) => {
+
+  const dispatch = useDispatch();
+
+  const userId = useSelector((state) => state.login.userData.id);
+  const userToken = useSelector((state) => state.login.userData.token);
+
+  useEffect(() => {
+    console.log(userId, userToken);
+    dispatch(akunUser(userToken))
+  }, [])
+  
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* <Header title="Akun Saya"/> */}
@@ -149,70 +159,11 @@ const Akun = ({navigation}) => {
           </Text>
         </TouchableOpacity>
       </View> */}
-
-      <View style={{backgroundColor: COLORS.white, padding: SIZES.padding3}}>
-        {/* <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: SIZES.radius1 }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <AntDesign name="user" color={COLORS.secondary} size={SIZES.h3} />
-            <Text style={{ ...FONTS.bodyNormalMedium, marginLeft: SIZES.base }}>Member</Text>
-          </View>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <Text style={{ ...FONTS.bodySmallBold, marginRight: 5 }}>Member Silver</Text>
-            <AntDesign name="right" color={COLORS.lightGray} size={SIZES.h5} />
-          </View>
-        </TouchableOpacity>
-        <Separator /> */}
-        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: SIZES.radius1 }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <AntDesign name="carryout" color={COLORS.secondary} size={SIZES.h3} />
-            <Text style={{ ...FONTS.bodyNormalMedium, marginLeft: SIZES.base }}>Riwayat Penjemputan</Text>
-          </View>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <AntDesign name="right" color={COLORS.lightGray} size={SIZES.h5} />
-          </View>
-        </TouchableOpacity>
-        <Separator />
-        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: SIZES.radius1 }} onPress={() => navigation.navigate('SettingScreen')}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <AntDesign name="setting" color={COLORS.secondary} size={SIZES.h3} />
-            <Text style={{ ...FONTS.bodyNormalMedium, marginLeft: SIZES.base }}>Pengaturan Akun</Text>
-          </View>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <AntDesign name="right" color={COLORS.lightGray} size={SIZES.h5} />
-          </View>
-        </TouchableOpacity>
-        <Separator />
-        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: SIZES.radius1 }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <AntDesign name="questioncircleo" color={COLORS.secondary} size={SIZES.h3} />
-            <Text style={{ ...FONTS.bodyNormalMedium, marginLeft: SIZES.base }}>Pusat Bantuan</Text>
-          </View>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <AntDesign name="right" color={COLORS.lightGray} size={SIZES.h5} />
-          </View>
-        </TouchableOpacity>
-        <Separator />
-        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: SIZES.radius1 }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <AntDesign name="customerservice" color={COLORS.secondary} size={SIZES.h3} />
-            <Text style={{ ...FONTS.bodyNormalMedium, marginLeft: SIZES.base }}>Customer Service</Text>
-          </View>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <AntDesign name="right" color={COLORS.lightGray} size={SIZES.h5} />
-          </View>
-        </TouchableOpacity>
-        <Separator />
-        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: SIZES.radius1 }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <AntDesign name="logout" color={COLORS.secondary} size={SIZES.h3} />
-            <Text style={{ ...FONTS.bodyNormalMedium, marginLeft: SIZES.base }}>Logout</Text>
-          </View>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <AntDesign name="right" color={COLORS.lightGray} size={SIZES.h5} />
-          </View>
-        </TouchableOpacity>
-        <Separator />
-      </View>
+        <TabMenu titleMenu="Riwayat Penjemputan" iconName="carryout"/>
+        <TabMenu titleMenu="Pengaturan Akun" iconName="setting" onPress={() => navigation.navigate("SettingScreen")}/>
+        <TabMenu titleMenu="Pusat Bantuan" iconName="questioncircleo"/>
+        <TabMenu titleMenu="Customer Service" iconName="customerservice"/>
+        <TabMenu titleMenu="Logout" iconName="logout"/>
     </ScrollView>
   );
 };

@@ -3,3 +3,7 @@ export const LOGIN_SUCCESS = '@LOGIN_SUCCESS';
 export const LOGIN_FAILED = '@LOGIN_FAILED';
 export const REGISTER_SUCCESS = '@REGISTER_SUCCESS';
 export const REGISTER_FAILED = '@REGISTER_FAILED';
+
+// Akun
+export const GET_AKUN_SUCCESS = '@GET_AKUN_SUCCESS';
+export const GET_AKUN_FAILED = '@GET_AKUN_FAILED';
