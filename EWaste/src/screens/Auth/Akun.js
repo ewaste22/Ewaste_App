@@ -21,6 +21,7 @@ const Akun = ({ navigation }) => {
 
   const userId = useSelector((state) => state.login.userData.id);
   const userToken = useSelector((state) => state.login.userData.token);
+  const userAkun = useSelector((state) => state.akun.userAkun);
 
   const onLogout = () => {
     Auth.logout();
@@ -50,7 +51,7 @@ const Akun = ({ navigation }) => {
         style={styles.headerWrapper}>
         <Image
           source={{
-            uri: 'https://th.bing.com/th/id/R.34ac62561e4d2d3f73903371539bfb5b?rik=0oRU4BctwhzLIA&riu=http%3a%2f%2fthispix.com%2fwp-content%2fuploads%2f2015%2f06%2fportrait-profile-008.jpg&ehk=ZPTQOU194fjZ2VzGXGXzymsATv6%2fCUW4EFn3Ya53CZ4%3d&risl=&pid=ImgRaw&r=0',
+            uri: `${userAkun?.image_courier}`,
           }}
           style={styles.imgProfile}
         />
@@ -72,10 +73,10 @@ const Akun = ({ navigation }) => {
               color: COLORS.white,
               textTransform: 'uppercase',
             }}>
-            Asep Brimstone
+            {userAkun?.fullname_courier}
           </Text>
           <Text style={{ ...FONTS.bodyNormalMedium, color: COLORS.white }}>
-            +62 8934 4312 231
+          {userAkun?.nomor_courier}
           </Text>
         </View>
       </ImageBackground>

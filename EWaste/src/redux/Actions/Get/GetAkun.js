@@ -15,7 +15,7 @@ export const akunUser = (token) => async (dispatch) => {
   // dispatch(setLoading(true));
   await getAkun(token)
     .then((response) => {
-      dispatch(successGetAkun(response.data));
+      dispatch(successGetAkun(response.data.data.courier));
     })
     .catch((err) => {
       dispatch(failedGetAkun());
