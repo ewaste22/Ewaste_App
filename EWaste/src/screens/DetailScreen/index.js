@@ -68,19 +68,6 @@ const DetailScreen = () => {
                   <Text style={styles.detailCard}>TV</Text>
                   <Text style={styles.detailCard}>1 Pcs</Text>
                 </View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    width: '73%',
-                    justifyContent: 'space-between',
-                  }}>
-                  <Text style={[styles.detailCard, {fontWeight: 'bold'}]}>
-                    Total Harga
-                  </Text>
-                  <Text style={[styles.detailCard, {fontWeight: 'bold'}]}>
-                    Rp. 90.000
-                  </Text>
-                </View>
               </View>
             </View>
           </View>
@@ -141,11 +128,26 @@ const DetailScreen = () => {
                   alignItems: 'flex-start',
                 }}>
                 <Text style={styles.titleCard}>Status Penjemputan</Text>
-                <View style={{marginVertical: 5}}>
+                {done && (
+                  <View style={{marginVertical: 5}}>
                   <Text
                     style={[
                       styles.detailCard,
                       {fontWeight: 'bold', color: COLORS.primary},
+                    ]}>
+                    Courier Selesai Membuang Sampah
+                  </Text>
+                  <Text style={{...FONTS.bodySmallMedium}}>
+                    26-09-2022 13:30
+                  </Text>
+                  <Separator />
+                </View>
+                )}
+                <View style={{marginVertical: 5}}>
+                  <Text
+                    style={[
+                      styles.detailCard,
+                      {color: done === false ? COLORS.primary : "grey", fontWeight: done === false ? "bold" : "normal"},
                     ]}>
                     Courier menuju dropbox tujuan
                   </Text>
