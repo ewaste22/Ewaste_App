@@ -3,16 +3,25 @@ import React, {useState} from 'react';
 import {CustomButton, Header, Input} from '../../components';
 import stylesConstant from '../../themes/stylesConstant';
 import {SIZES} from '../../themes';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changePasswordUser } from '../../redux/Actions/Patch/ChangePassAction';
 
 const ChangePassword = () => {
+  const dispatch = useDispatch();
+
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
   const userId = useSelector((state) => state.login.userData.id);
+  const userToken = useSelector((state) => state.login.userData.token);
 
-  const sendData = () => {
-      console.log(userId, oldPassword, newPassword);
+  const sendData = () => {  
+      data = {
+        oldPassword: oldPassword,
+        newPassword: newPassword
+      }
+      console.log(data);
+      dispatch(changePasswordUser(userId, data, userToken))
   }
 
   return (
