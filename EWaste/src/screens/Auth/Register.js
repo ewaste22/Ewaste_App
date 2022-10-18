@@ -94,7 +94,7 @@ const Register = ({ navigation }) => {
           onPress={() => navigation.navigate('Login')}
         >
           <Text style={{ ...FONTS.bodyNormalBold, color: COLORS.primary }}>
-            Sign Up
+            Sign In
           </Text>
         </TouchableOpacity>
       </View>
