@@ -13,6 +13,7 @@ import {
   Register,
   SettingScreen,
   SplashScreen,
+  UpdateProfile
 } from '../screens';
 import { BottomNavigation } from '../components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -113,6 +114,11 @@ const Router = () => {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="UpdateProfile"
+        component={UpdateProfile}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

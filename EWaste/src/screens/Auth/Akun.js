@@ -70,7 +70,7 @@ const Akun = ({ navigation }) => {
             {userAkun?.fullname_courier}
           </Text>
           <Text style={{ ...FONTS.bodyNormalMedium, color: COLORS.white }}>
-          {userAkun?.nomor_courier}
+            {userAkun?.nomor_courier}
           </Text>
         </View>
       </ImageBackground>
