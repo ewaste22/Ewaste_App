@@ -6,42 +6,58 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
-import { Header, Label } from '../../components';
-import { COLORS, FONTS, RADIUS, SIZES } from '../../themes';
-import stylesConstant from '../../themes/stylesConstant';
-import Icon from 'react-native-vector-icons/Feather';
-import Icon2 from 'react-native-vector-icons/Entypo';
-import { MiniMap } from '../../assets';
+import React, {useEffect} from 'react';
+import {CardOrder, Header, Label} from '../../components';
+import {COLORS, FONTS, RADIUS, SIZES} from '../../themes';
+import { useDispatch, useSelector } from 'react-redux';
+import { akunUser } from '../../redux/Actions';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+  
+  const userToken = useSelector((state) => state.login.userData.token);
+  const userAkun = useSelector((state) => state.akun?.userAkun);
+
+  useEffect(() => {
+    dispatch(akunUser(userToken));
+  }, []);
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* <Header title="Delivery" /> */}
-      <View style={{ marginHorizontal: SIZES.padding3 }}>
+      <View style={{marginHorizontal: SIZES.padding3}}>
         <View
           style={[
-            stylesConstant.card,
+            // stylesConstant.card,
             {
               marginVertical: SIZES.padding3,
-              padding: SIZES.radius2,
+              // padding: SIZES.radius2,
             },
           ]}>
-
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 1, paddingTop: SIZES.base }}>
-              <Text style={{ ...FONTS.bodyNormalBold }}>Hallo,</Text>
-              <Text style={styles.titleCard}>Asep Brimstone</Text>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 1, paddingTop: SIZES.base}}>
+              <Text style={{...FONTS.bodyNormalBold}}>Hallo,</Text>
+              <Text style={styles.titleCard}>{userAkun?.fullname_courier}</Text>
             </View>
 
-            <View style={{ flex: 1, alignItems: 'flex-end' }}>
-              <View style={{ alignItems: 'center' }}>
-                <Image source={{ uri: "https://th.bing.com/th/id/R.34ac62561e4d2d3f73903371539bfb5b?rik=0oRU4BctwhzLIA&riu=http%3a%2f%2fthispix.com%2fwp-content%2fuploads%2f2015%2f06%2fportrait-profile-008.jpg&ehk=ZPTQOU194fjZ2VzGXGXzymsATv6%2fCUW4EFn3Ya53CZ4%3d&risl=&pid=ImgRaw&r=0" }} style={{ width: 35, height: 35, borderRadius: 12, marginTop: SIZES.base }} />
+            <View style={{flex: 1, alignItems: 'flex-end'}}>
+              <View style={{alignItems: 'center'}}>
+                <Image
+                  source={{
+                    uri: `${userAkun?.image_courier}`,
+                  }}
+                  style={{
+                    width: 35,
+                    height: 35,
+                    borderRadius: 12,
+                    marginTop: SIZES.base,
+                  }}
+                />
               </View>
             </View>
           </View>
 
-          <View
+          {/* <View
             style={{
               borderRadius: RADIUS.small,
               flexDirection: 'row',
@@ -74,7 +90,7 @@ const HomeScreen = ({ navigation }) => {
                 </Text>
               </View>
             </View>
-          </View>
+          </View> */}
         </View>
 
         {/* Orderan */}
@@ -88,79 +104,12 @@ const HomeScreen = ({ navigation }) => {
               fontWeight: 'bold',
             },
           ]}>
-          Orderan Baru
+          Sampah Belum Diangkut
         </Text>
-        <TouchableOpacity style={[stylesConstant.card, { padding: SIZES.radius2 }]} onPress={() => navigation.navigate('DetailScreen')}>
-          <View style={stylesConstant.spaceBeetween}>
-            <Label title={4} size="big" />
-          </View>
 
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 10 }]}>
-            <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Herlan Nurachman</Text>
-            <Text style={{ ...FONTS.bodySmallBold }}>Rp 2000/kg</Text>
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 5 }]}>
-            <Text style={{ ...FONTS.bodyNormalBold }}>Berat</Text>
-            <Text style={{ ...FONTS.bodyNormalBold }}>6 kg</Text>
-          </View>
-
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 5 }]}>
-            <Text style={{ ...FONTS.bodyNormalBold }}>Harga</Text>
-            <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Rp. 12.000</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={[stylesConstant.card, { padding: SIZES.radius2 }]}>
-          <View style={stylesConstant.spaceBeetween}>
-            <Label title={5.7} size="big" />
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 10 }]}>
-            <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Aji Nuansa</Text>
-            <Text style={{ ...FONTS.bodySmallBold }}>Rp 2000/kg</Text>
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 5 }]}>
-            <Text style={{ ...FONTS.bodyNormalBold }}>Berat</Text>
-            <Text style={{ ...FONTS.bodyNormalBold }}>10 kg</Text>
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 5 }]}>
-            <Text style={{ ...FONTS.bodyNormalBold }}>Harga</Text>
-            <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Rp. 20.000</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={[stylesConstant.card, { padding: SIZES.radius2 }]}>
-          <View style={stylesConstant.spaceBeetween}>
-            <Label title={5} size="big" />
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 10 }]}>
-            <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Aldi Ageng</Text>
-            <Text style={{ ...FONTS.bodySmallBold }}>Rp 2000/kg</Text>
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 5 }]}>
-            <Text style={{ ...FONTS.bodyNormalBold }}>Berat</Text>
-            <Text style={{ ...FONTS.bodyNormalBold }}>30 kg</Text>
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 5 }]}>
-            <Text style={{ ...FONTS.bodyNormalBold }}>Harga</Text>
-            <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Rp. 60.000</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={[stylesConstant.card, { padding: SIZES.radius2 }]}>
-          <View style={stylesConstant.spaceBeetween}>
-            <Label title={3} size="big" />
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 10 }]}>
-            <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Sahid Jafar</Text>
-            <Text style={{ ...FONTS.bodySmallBold }}>Rp 2000/kg</Text>
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 5 }]}>
-            <Text style={{ ...FONTS.bodyNormalBold }}>Berat</Text>
-            <Text style={{ ...FONTS.bodyNormalBold }}>12 kg</Text>
-          </View>
-          <View style={[stylesConstant.spaceBeetween, { marginTop: 5 }]}>
-            <Text style={{ ...FONTS.bodyNormalBold }}>Harga</Text>
-            <Text style={{ ...FONTS.bodyLargeBold, color: COLORS.black }}>Rp. 24.000</Text>
-          </View>
-        </TouchableOpacity>
+        <CardOrder onPress={() => navigation.navigate('DetailScreen')} />
+        <CardOrder onPress={() => navigation.navigate('DetailScreen')} />
+        <CardOrder onPress={() => navigation.navigate('DetailScreen')} />
       </View>
     </ScrollView>
   );

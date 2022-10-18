@@ -29,15 +29,9 @@ const Akun = ({ navigation }) => {
     navigation.replace('Splash');
   }
 
-  const getUser = async () => {
-    let data = await Auth.getAccount();
-    console.log(data);
-  }
-
   useEffect(() => {
     console.log(userId, userToken);
     dispatch(akunUser(userToken));
-    getUser();
   }, [])
 
 

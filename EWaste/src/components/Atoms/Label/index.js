@@ -9,7 +9,7 @@ const Label = ({title, size}) => {
         style={{...FONTS.bodySmallBold, textAlign: 'center', color: COLORS.white}}
         numberOfLines={1}
         ellipsizeMode="tail">
-        {title} Km
+        {title}
       </Text>
     </View>
   );
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: COLORS.primary,
     padding: SIZES.base,
-    borderRadius: RADIUS.medium,
-    width: 60,
+    borderRadius: RADIUS.small,
+    width: 120,
   },
 });
