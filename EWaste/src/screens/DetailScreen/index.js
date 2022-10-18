@@ -1,11 +1,13 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import stylesConstant from '../../themes/stylesConstant';
 import {COLORS, FONTS, SIZES} from '../../themes';
 import Icon from 'react-native-vector-icons/Entypo';
 import {CustomButton, Header, Separator} from '../../components';
 
 const DetailScreen = () => {
+  const [done, setDone] = useState(false)
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View>
@@ -177,8 +179,10 @@ const DetailScreen = () => {
       </View>
 
       <CustomButton
-        title="Selesai"
+        title={done === false ? "Ubah Status" : "Selesai"}
         buttonStyle={{marginBottom: SIZES.padding5, marginHorizontal: SIZES.padding3}}
+        enabled={done}
+        onPress={() => done === false ? setDone(true) : setDone(false)}
       />
     </ScrollView>
   );
