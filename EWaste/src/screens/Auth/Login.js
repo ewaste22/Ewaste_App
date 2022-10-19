@@ -1,11 +1,12 @@
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
-import {CustomButton, InputText} from '../../components/';
-import {useDispatch, useSelector} from 'react-redux';
-import {loginUser} from '../../redux/Actions/Push/Auth';
-import {COLORS, FONTS, SIZES} from '../../themes';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+// import { CustomButton, InputText } from '../../components/';
+import { CustomButton, Header, Input } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../redux/Actions/Push/Auth';
+import { COLORS, FONTS, SIZES } from '../../themes';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -26,8 +27,8 @@ const Login = ({navigation}) => {
         }}>
         <Text style={styles.headerTitle}>Log In</Text>
         <View style={{ marginTop: SIZES.padding5 }}>
-          <Text style={styles.title}>Email</Text>
-          <InputText
+          <Input
+            titleInput="Email"
             name="email"
             placeholder="Email"
             onChangeText={text => setEmail(text)}
@@ -37,8 +38,8 @@ const Login = ({navigation}) => {
           />
         </View>
         <View style={[styles.inputContainer, { marginTop: SIZES.padding3 }]}>
-          <Text style={styles.title}>Password</Text>
-          <InputText
+          <Input
+            titleInput="Password"
             name="password"
             placeholder="Password"
             onChangeText={text => setPassword(text)}
@@ -48,7 +49,7 @@ const Login = ({navigation}) => {
           />
         </View>
         <TouchableOpacity style={{ marginVertical: SIZES.padding1, alignItems: 'flex-end', marginRight: SIZES.base }} onPress={() => navigation.navigate('ForgotPassword')}>
-          <Text style={{ ...FONTS.bodyNormalRegular, color: COLORS.secondary}}>Lupa Password</Text>
+          <Text style={{ ...FONTS.bodyNormalRegular, color: COLORS.secondary }}>Lupa Password</Text>
         </TouchableOpacity>
         <CustomButton
           onPress={() => sendData()}
@@ -57,17 +58,17 @@ const Login = ({navigation}) => {
         />
       </View>
       <View style={styles.goToRegister}>
-          <Text style={{ ...FONTS.bodyNormalRegular, color: COLORS.secondary, marginRight: 5 }}>
-            Belum punya akun?
+        <Text style={{ ...FONTS.bodyNormalRegular, color: COLORS.secondary, marginRight: 5 }}>
+          Belum punya akun?
+        </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Register')}
+        >
+          <Text style={{ ...FONTS.bodyNormalBold, color: COLORS.primary }}>
+            Register
           </Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Register')}
-          >
-            <Text style={{ ...FONTS.bodyNormalBold, color: COLORS.primary }}>
-              Register
-            </Text>
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
