@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { CustomButton, InputText } from '../../components/';
+import { InputText } from '../../components/';
+import { CustomButton, Header, Input } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/Actions/Push/Auth';
 import { COLORS, FONTS, SIZES } from '../../themes';
@@ -25,18 +26,20 @@ const Register = ({ navigation }) => {
           flex: 1,
         }}>
         <Text style={styles.headerTitle}>Sign Up</Text>
-
         <View style={{ marginTop: SIZES.padding3 }}>
-          <Text style={styles.title}>Fullname</Text>
-          <InputText
+          <Input
+            titleInput="Fullname"
             name="Fullname"
             placeholder="Fullname"
+            // onChangeText={text => setOldPassword(text)}
+            // value={oldPassword}
+            keyboardType="fullname_courier"
           />
         </View>
 
         <View style={{ marginTop: SIZES.padding3 }}>
-          <Text style={styles.title}>Email</Text>
-          <InputText
+          <Input
+            titleInput="Email"
             name="email"
             placeholder="Email"
             onChangeText={text => setEmail(text)}
@@ -47,28 +50,31 @@ const Register = ({ navigation }) => {
         </View>
 
         <View style={{ marginTop: SIZES.padding3 }}>
-          <Text style={styles.title}>Address</Text>
-          <InputText
-            name="Address"
+
+          <Input
+            titleInput="Address"
+            name="address"
             placeholder="Address"
-            onChangeText={text => setEmail(text)}
-            value={email}
+          // onChangeText={text => setOldPassword(text)}
+          // value={oldPassword}
+          // keyboardType="password"
           />
         </View>
 
         <View style={{ marginTop: SIZES.padding3 }}>
-          <Text style={styles.title}>Phone Number</Text>
-          <InputText
-            name="Phone Number"
+          <Input
+            titleInput="Phone Number"
+            name="phoneNumber"
             placeholder="Phone Number"
-            onChangeText={text => setEmail(text)}
-            value={email}
+          // onChangeText={text => setOldPassword(text)}
+          // value={oldPassword}
+          // keyboardType="password"
           />
         </View>
 
         <View style={[styles.inputContainer, { marginTop: SIZES.padding3 }]}>
-          <Text style={styles.title}>Password</Text>
-          <InputText
+          <Input
+            titleInput="Password"
             name="password"
             placeholder="Password"
             onChangeText={text => setPassword(text)}
