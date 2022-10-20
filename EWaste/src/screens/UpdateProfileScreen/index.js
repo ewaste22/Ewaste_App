@@ -1,14 +1,127 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {ScrollView, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {CustomButton, Header, Input} from '../../components';
+import {SIZES} from '../../themes';
+import stylesConstant from '../../themes/stylesConstant';
+import {useSelector, useDispatch} from 'react-redux';
+import {akunUser} from '../../redux/Actions';
 
 const UpdateProfile = () => {
-    return (
-        <View>
-            <Text>UpdateProfile</Text>
-        </View>
-    )
-}
+  const dispatch = useDispatch();
 
-export default UpdateProfile
+  const userId = useSelector(state => state.login.userData.id);
+  const userToken = useSelector(state => state.login.userData.token);
+  const userAkun = useSelector(state => state.akun.userAkun);
 
-const styles = StyleSheet.create({})
+  const [email, setEmail] = useState(userAkun?.email_courier)
+  const [name, setName] = useState(userAkun?.fullname_courier)
+  const [maxLoad, setMaxLoad] = useState(userAkun?.maxLoad_courier)
+  const [noHp, setNoHp] = useState(userAkun?.nomor_courier)
+  const [noPolisi, setNoPolisi] = useState(userAkun?.nopol_courier)
+  const [transType, setTransType] = useState(userAkun?.transportationType_courier)
+  const [photo, setPhoto] = useState(userAkun?.image_courier)
+
+
+  useEffect(() => {
+    console.log(userId, userToken);
+    dispatch(akunUser(userToken));
+  }, []);
+
+  const onUpdate = async () => {
+    const formdata = new FormData();
+    // formdata.append('full_name', values.full_name);
+    formdata.append('email_courier', email);
+    formdata.append('fullname_courier', name);
+    formdata.append('transportationType_courier', transType);
+    formdata.append('maxLoad_courier', maxLoad);
+    formdata.append('nopol_courier', noPolisi);
+    formdata.append('nomor_courier', noHp);
+
+    console.log("Form Data ",formdata);
+
+    // if (values.image_url !== profileData.image_url) {
+    //   formdata.append('image', {
+    //     uri: values.image_url.uri,
+    //     type: 'image/jpeg',
+    //     name: values.image_url.fileName,
+    //   });
+    // }
+  };
+
+
+  return (
+    <ScrollView contentContainerStyle={[stylesConstant.container]} >
+    <Header title="Ubah Profile" showIcon={true}/>
+      <ScrollView style={{paddingHorizontal: SIZES.padding3}}>
+        <TouchableOpacity style={{ width: 130, height: 130, borderRadius: 20,overflow: 'hidden', alignSelf: 'center', marginVertical: SIZES.radius2 }}>
+            <Image source={{uri: photo}} style={{width: 130, height: 130,}}/>
+        </TouchableOpacity>
+        <Input
+          titleInput="Email"
+          name="email"
+          placeholder="Email"
+          onChangeText={text => setEmail(text)}
+          value={email}
+          keyboardType="email"
+          secureTextEntry={false}
+          inputStyle={{marginVertical: SIZES.radius1}}
+        />
+        <Input
+          titleInput="Nama Lengkap"
+          name="name"
+          placeholder="Nama Lengkap"
+          onChangeText={text => setName(text)}
+          value={name}
+          keyboardType="email"
+          secureTextEntry={false}
+          inputStyle={{marginBottom: SIZES.radius1}}
+        />
+        <Input
+          titleInput="Jenis Kendaraan"
+          name="email"
+          placeholder="Jenis Kendaraan"
+          onChangeText={text => setTransType(text)}
+          value={transType}
+          keyboardType="email"
+          secureTextEntry={false}
+          inputStyle={{marginBottom: SIZES.radius1}}
+        />
+        <Input
+          titleInput="Maximal Angkut"
+          name="email"
+          placeholder="Maximal Angkut"
+          onChangeText={text => setMaxLoad(text)}
+          value={maxLoad}
+          keyboardType="email"
+          secureTextEntry={false}
+          inputStyle={{marginBottom: SIZES.radius1}}
+        />
+        <Input
+          titleInput="No. Polisi"
+          name="email"
+          placeholder="No. Polisi"
+          onChangeText={text => setNoPolisi(text)}
+          value={noPolisi}
+          keyboardType="email"
+          secureTextEntry={false}
+          inputStyle={{marginBottom: SIZES.radius1}}
+        />
+        <Input
+          titleInput="No. Handphone"
+          name="email"
+          placeholder="No. Handphone"
+          onChangeText={text => setNoHp(text)}
+          value={noHp}
+          keyboardType="email"
+          secureTextEntry={false}
+          inputStyle={{marginBottom: SIZES.h1}}
+        />
+        <CustomButton title="UBAH PROFILE" onPress={() => onUpdate()} enabled={false} buttonStyle={{ marginBottom: SIZES.h1 }}/>
+      </ScrollView>
+    </ScrollView>
+  );
+};
+
+export default UpdateProfile;
+
+const styles = StyleSheet.create({});
