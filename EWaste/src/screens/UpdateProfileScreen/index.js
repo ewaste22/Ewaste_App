@@ -1,10 +1,10 @@
 import {ScrollView, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {CustomButton, Header, Input} from '../../components';
-import {SIZES} from '../../themes';
+import React, {useEffect, useId, useState} from 'react';
+import {CustomButton, Header, Input, PhotoProfile} from '../../components';
+import {COLORS, SIZES} from '../../themes';
 import stylesConstant from '../../themes/stylesConstant';
 import {useSelector, useDispatch} from 'react-redux';
-import {akunUser} from '../../redux/Actions';
+import {akunUser, changeAkun} from '../../redux/Actions';
 
 const UpdateProfile = () => {
   const dispatch = useDispatch();
@@ -37,15 +37,19 @@ const UpdateProfile = () => {
     formdata.append('nopol_courier', noPolisi);
     formdata.append('nomor_courier', noHp);
 
-    console.log("Form Data ",formdata);
+    if (photo !== akunUser.image_courier) {
+      formdata.append('image_courier', {
+        uri: photo,
+        type: 'image/jpeg',
+        name: photo,
+      });
+    }
 
-    // if (values.image_url !== profileData.image_url) {
-    //   formdata.append('image', {
-    //     uri: values.image_url.uri,
-    //     type: 'image/jpeg',
-    //     name: values.image_url.fileName,
-    //   });
-    // }
+    console.log("Form Data ",formdata);
+    // console.log("Image Data ", formdata[0][6]);
+    console.log("Image Data ", formdata._parts);
+    console.log("User Id ", useId);
+    dispatch(changeAkun(1, formdata))
   };
 
 
@@ -53,9 +57,17 @@ const UpdateProfile = () => {
     <ScrollView contentContainerStyle={[stylesConstant.container]} >
     <Header title="Ubah Profile" showIcon={true}/>
       <ScrollView style={{paddingHorizontal: SIZES.padding3}}>
-        <TouchableOpacity style={{ width: 130, height: 130, borderRadius: 20,overflow: 'hidden', alignSelf: 'center', marginVertical: SIZES.radius2 }}>
+        <PhotoProfile 
+          name="image_courier"
+          image={{ uri: photo ? photo : '' }}
+          setFieldValue={setPhoto}
+          icon="camera"
+          colorIcon={COLORS.primary}
+          styleImage={!photo && { marginTop: 20 }}
+        />
+        {/* <TouchableOpacity style={{ width: 130, height: 130, borderRadius: 20,overflow: 'hidden', alignSelf: 'center', marginVertical: SIZES.radius2 }}>
             <Image source={{uri: photo}} style={{width: 130, height: 130,}}/>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <Input
           titleInput="Email"
           name="email"

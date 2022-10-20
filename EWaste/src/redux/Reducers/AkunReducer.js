@@ -1,4 +1,4 @@
-import {GET_AKUN_SUCCESS, GET_AKUN_FAILED, CHANGE_PASSWORD_SUCCESS, CHANGE_PASSWORD_FAILED} from '../Types';
+import {GET_AKUN_SUCCESS, GET_AKUN_FAILED, CHANGE_PASSWORD_SUCCESS, CHANGE_PASSWORD_FAILED, PATCH_AKUN_SUCCESS, PATCH_AKUN_FAILED} from '../Types';
 
 const initialState = {
   userAkun: [],
@@ -20,6 +20,14 @@ const AkunReducer = (state = initialState, action = {}) => {
         ...state,
       };
     case CHANGE_PASSWORD_FAILED:
+      return {
+        ...state,
+      };
+    case PATCH_AKUN_SUCCESS:
+      return {
+        ...state,
+      };
+    case PATCH_AKUN_FAILED:
       return {
         ...state,
       };
