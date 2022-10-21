@@ -1,12 +1,20 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React, { useState } from 'react';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useState} from 'react';
 // import { CustomButton, InputText } from '../../components/';
-import { CustomButton, Header, Input } from '../../components';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../redux/Actions/Push/Auth';
-import { COLORS, FONTS, SIZES } from '../../themes';
+import {CustomButton, Header, Input} from '../../components';
+import {useDispatch, useSelector} from 'react-redux';
+import {loginUser} from '../../redux/Actions/Push/Auth';
+import {COLORS, FONTS, SIZES} from '../../themes';
+import Lottie from 'lottie-react-native';
+import stylesConstant from '../../themes/stylesConstant';
 
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,14 +27,23 @@ const Login = ({ navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View
-        style={{
-          marginHorizontal: SIZES.padding3,
-          marginTop: SIZES.padding5,
+      <View style={{
+          // marginVertical: SIZES.padding3,
+          marginTop: SIZES.padding1,
           flex: 1,
+          height: 200
         }}>
+        <Lottie source={require('../../assets/images/courier.json')} autoPlay loop />
+      </View>
+      <View
+        style={[{
+          paddingHorizontal: SIZES.padding3,
+          // marginTop: SIZES.padding3,
+          flex: 1,
+          // backgroundColor: COLORS.third
+        }]}>
         <Text style={styles.headerTitle}>Log In</Text>
-        <View style={{ marginTop: SIZES.padding5 }}>
+        <View style={{marginTop: SIZES.padding5}}>
           <Input
             titleInput="Email"
             name="email"
@@ -37,7 +54,7 @@ const Login = ({ navigation }) => {
             secureTextEntry={false}
           />
         </View>
-        <View style={[styles.inputContainer, { marginTop: SIZES.padding3 }]}>
+        <View style={[styles.inputContainer, {marginTop: SIZES.padding3}]}>
           <Input
             titleInput="Password"
             name="password"
@@ -48,27 +65,24 @@ const Login = ({ navigation }) => {
             secureTextEntry={true}
           />
         </View>
-        <TouchableOpacity style={{ marginVertical: SIZES.padding1, alignItems: 'flex-end', marginRight: SIZES.base }} onPress={() => navigation.navigate('ForgotPassword')}>
-          <Text style={{ ...FONTS.bodyNormalRegular, color: COLORS.secondary }}>Lupa Password</Text>
+        <TouchableOpacity
+          style={{
+            marginVertical: SIZES.padding1,
+            alignItems: 'flex-end',
+            marginRight: SIZES.base,
+          }}
+          onPress={() => navigation.navigate('ForgotPassword')}>
+          <Text style={{...FONTS.bodyNormalRegular, color: COLORS.secondary}}>
+            Lupa Password?
+          </Text>
         </TouchableOpacity>
         <CustomButton
           onPress={() => sendData()}
           title="Login"
-          enabled={email === "" || password === ""}
+          enabled={email === '' || password === ''}
         />
       </View>
-      <View style={styles.goToRegister}>
-        <Text style={{ ...FONTS.bodyNormalRegular, color: COLORS.secondary, marginRight: 5 }}>
-          Belum punya akun?
-        </Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Register')}
-        >
-          <Text style={{ ...FONTS.bodyNormalBold, color: COLORS.primary }}>
-            Register
-          </Text>
-        </TouchableOpacity>
-      </View>
+      
     </ScrollView>
   );
 };
@@ -88,14 +102,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: COLORS.black,
     marginBottom: 5,
-    marginLeft: 3
+    marginLeft: 3,
   },
   headerTitle: {
     ...FONTS.headingLargeBold,
-    marginVertical: SIZES.padding5,
+    marginVertical: SIZES.padding2,
     color: COLORS.black,
     fontWeight: 'bold',
-    marginLeft: 3
+    marginLeft: 3,
     // textAlign: 'center',
   },
   goToRegister: {
